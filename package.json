@@ -1,7 +1,7 @@
 {
   "name": "vlpha-react-app",
   "private": false,
-  "version": "0.0.2",
+  "version": "0.0.1",
   "description": "A script to create a new React project with a custom structure by the Alpha",
   "type": "module",
   "scripts": {
@@ -38,6 +38,6 @@
     "vite": "^5.4.10"
   },
   "bin": {
-    "vlpha-react-app": "./setup.js"
+    "vlpha-react-app": "./setup.cjs"
   }
 }
