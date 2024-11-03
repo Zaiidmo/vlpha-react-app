@@ -38,6 +38,6 @@
     "vite": "^5.4.10"
   },
   "bin": {
-    "vlpha-react-app": "./setup.cjs"
+    "vlpha-react-app": "./setup.js"
   }
 }
