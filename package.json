@@ -1,7 +1,7 @@
 {
   "name": "vlpha-react-app",
   "private": false,
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A script to create a new React project with a custom structure by the Alpha",
   "type": "module",
   "scripts": {
