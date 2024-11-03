@@ -8,7 +8,7 @@ const projectName = process.argv[2] || "my-app";
 
 // Step 1: Clone the repository
 console.log(`Cloning the project into ${projectName}...`);
-execSync(`git clone https://github.com/Zaiidmo/vlpha-react-project.git ${projectName}`, { stdio: "inherit" });
+execSync(`git clone https://github.com/Zaiidmo/vlpha-react-app.git ${projectName}`, { stdio: "inherit" });
 
 // Step 2: Navigate into the project directory
 process.chdir(projectName);
