@@ -1,10 +1,8 @@
-'use client'
-
-import { useState, useEffect } from 'react'
+import  { useState, useEffect } from 'react'
 import { Moon, Sun } from 'lucide-react'
 import { Button } from "../ui/button"
 
-export default function Navbar() {
+export default function GlassNavbar() {
   const [darkMode, setDarkMode] = useState(false)
 
   useEffect(() => {
@@ -20,12 +18,12 @@ export default function Navbar() {
       <div className="max-w-5xl mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
-            <a href="https://vlpha.tech" className="text-2xl font-semibold text-gray-800 dark:text-white text-shadow">
-              <img src="./vlpha.png" className='w-10 bg-black rounded-full' alt="" />
+            <a href="/" className="text-2xl font-semibold text-gray-800 dark:text-white text-shadow">
+              Logo
             </a>
           </div>
           <div className="flex items-center space-x-4">
-            <Button variant="ghost" className="text-gray-800 dark:text-white hover:bg-white/40 dark:hover:bg-gray-700/40 transition-all duration-300 ease-in-out backdrop-blur-md">
+            <Button variant="ghost" className="text-gray-800 bg-transparent dark:text-white hover:bg-white/40 dark:hover:bg-gray-700/40 transition-all duration-300 ease-in-out backdrop-blur-md">
               Login
             </Button>
             <Button variant="outline" className="text-gray-800 dark:text-white border-gray-300 dark:border-gray-600 hover:bg-white/40 dark:hover:bg-gray-700/40 transition-all duration-300 ease-in-out backdrop-blur-md">
