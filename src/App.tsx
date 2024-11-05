@@ -3,15 +3,17 @@ import reactLogo from './assets/react.svg'
 import vlphaLogo from '/vlpha.png'
 import viteLogo from '/vite.svg'
 import './App.css'
+import Navbar from './components/layouts/Navbar'
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <>
-      <div className='w-screen h-screen flex flex-col items-center justify-center'>
+    <Navbar />
+      <div className='flex flex-col items-center justify-center'>
           <a href="https://www.vlpha.tech" target="_blank">
-            <img src={vlphaLogo} className="w-64" alt="Vlpha logo" />
+            <img src={vlphaLogo} className="w-64 bg-black rounded-full" alt="Vlpha logo" />
           </a>
         <div className='flex'>
           <a href="https://vite.dev" target="_blank">
@@ -26,7 +28,7 @@ function App() {
           </p>
         <h1>Vite + React</h1>
         <div className="card">
-          <button onClick={() => setCount((count) => count + 1)}>
+          <button className='text-white ' onClick={() => setCount((count) => count + 1)}>
             count is {count}
           </button>
           <p>
