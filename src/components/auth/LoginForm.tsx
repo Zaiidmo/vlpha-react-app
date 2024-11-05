@@ -53,6 +53,7 @@ export default function LoginForm() {
             </FormItem>
           )}
         />
+        
         <Button type="submit" className="w-full">Log in</Button>
       </form>
     </Form>

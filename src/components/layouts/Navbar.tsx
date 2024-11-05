@@ -1,8 +1,12 @@
-import  { useState, useEffect } from 'react'
+'use client'
+
+import { useState, useEffect } from 'react'
 import { Moon, Sun } from 'lucide-react'
 import { Button } from "../ui/button"
+import { GlassModal } from '../GlassModal'
+import LoginForm from '../auth/LoginForm'
 
-export default function GlassNavbar() {
+export default function Navbar() {
   const [darkMode, setDarkMode] = useState(false)
 
   useEffect(() => {
@@ -18,17 +22,40 @@ export default function GlassNavbar() {
       <div className="max-w-5xl mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
-            <a href="/" className="text-2xl font-semibold text-gray-800 dark:text-white text-shadow">
-              Logo
+            <a href="https://vlpha.tech" className="text-2xl font-semibold text-gray-800 dark:text-white text-shadow">
+              <img src="./vlpha.png" className='w-10 bg-black rounded-full' alt="Logo" />
             </a>
           </div>
           <div className="flex items-center space-x-4">
-            <Button variant="ghost" className="text-gray-800 bg-transparent dark:text-white hover:bg-white/40 dark:hover:bg-gray-700/40 transition-all duration-300 ease-in-out backdrop-blur-md">
-              Login
-            </Button>
+            {/* Login Button as Trigger for the GlassModal */}
+            <GlassModal
+              trigger={
+                <Button variant="ghost" className="text-gray-800 bg-transparent dark:text-white hover:bg-white/40 dark:hover:bg-gray-700/40 transition-all duration-300 ease-in-out backdrop-blur-md">
+                  Login
+                </Button>
+              }
+            >
+              <div className="text-center mb-6">
+                <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
+                  Log in to your account
+                </h2>
+                
+                <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
+                  Or{' '}
+                  <a href="#" className="font-medium text-indigo-600 hover:text-indigo-500 dark:text-indigo-400 dark:hover:text-indigo-300">
+                    start your 14-day free trial
+                  </a>
+                </p>
+              </div>
+              <LoginForm />
+            </GlassModal>
+
+            {/* Register Button */}
             <Button variant="outline" className="text-gray-800 dark:text-white border-gray-300 dark:border-gray-600 hover:bg-white/40 dark:hover:bg-gray-700/40 transition-all duration-300 ease-in-out backdrop-blur-md">
               Register
             </Button>
+
+            {/* Dark Mode Toggle Button */}
             <Button
               variant="ghost"
               size="icon"
