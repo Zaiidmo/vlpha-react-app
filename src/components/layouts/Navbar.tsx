@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import { Moon, Sun } from 'lucide-react'
 import { Button } from "../ui/button"
-import { GlassModal } from '../GlassModal'
+import { GlassModal } from '../modals/GlassModal'
 import LoginForm from '../auth/LoginForm'
 import RegisterForm from '../auth/RegisterForm'
 

@@ -1,3 +1,4 @@
+import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import * as z from 'zod'
@@ -5,6 +6,7 @@ import { Button } from "../ui/button"
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "../ui/form"
 import { Input } from "../ui/input"
 import { Checkbox } from "../ui/checkbox"
+import { Eye, EyeOff } from 'lucide-react'
 
 const formSchema = z.object({
   firstName: z.string().min(2, { message: "First name must be at least 2 characters" }),
@@ -21,6 +23,9 @@ const formSchema = z.object({
 })
 
 export default function RegisterForm() {
+  const [showPassword, setShowPassword] = useState(false)
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false)
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -117,7 +122,26 @@ export default function RegisterForm() {
             <FormItem>
               <FormLabel>Password</FormLabel>
               <FormControl>
-                <Input type="password" placeholder="********" {...field} className="bg-white/50 dark:bg-gray-800/50" />
+                <div className="relative">
+                  <Input 
+                    type={showPassword ? "text" : "password"} 
+                    placeholder="********" 
+                    {...field} 
+                    className="bg-white/50 dark:bg-gray-800/50 pr-10" 
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowPassword(!showPassword)}
+                    className="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 hover:text-gray-600 dark:text-gray-300 dark:hover:text-gray-100 transition-colors duration-200"
+                    aria-label={showPassword ? "Hide password" : "Show password"}
+                  >
+                    {showPassword ? (
+                      <EyeOff className="h-4 w-4 opacity-70 hover:opacity-100" />
+                    ) : (
+                      <Eye className="h-4 w-4 opacity-70 hover:opacity-100" />
+                    )}
+                  </button>
+                </div>
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -130,36 +154,28 @@ export default function RegisterForm() {
             <FormItem>
               <FormLabel>Confirm Password</FormLabel>
               <FormControl>
-                <Input type="password" placeholder="********" {...field} className="bg-white/50 dark:bg-gray-800/50" />
+                <div className="relative">
+                  <Input 
+                    type={showConfirmPassword ? "text" : "password"} 
+                    placeholder="********" 
+                    {...field} 
+                    className="bg-white/50 dark:bg-gray-800/50 pr-10" 
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                    className="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 hover:text-gray-600 dark:text-gray-300 dark:hover:text-gray-100 transition-colors duration-200"
+                    aria-label={showConfirmPassword ? "Hide password" : "Show password"}
+                  >
+                    {showConfirmPassword ? (
+                      <EyeOff className="h-4 w-4 opacity-70 hover:opacity-100" />
+                    ) : (
+                      <Eye className="h-4 w-4 opacity-70 hover:opacity-100" />
+                    )}
+                  </button>
+                </div>
               </FormControl>
               <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="policyAgreed"
-          render={({ field }) => (
-            <FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-md border p-4">
-              <FormControl>
-                <Checkbox
-                  checked={field.value}
-                  onCheckedChange={field.onChange}
-                />
-              </FormControl>
-              <div className="space-y-1 leading-none">
-                <FormLabel>
-                  I agree to the{' '}
-                  <a href="#" className="text-indigo-600 hover:text-indigo-500 dark:text-indigo-400 dark:hover:text-indigo-300">
-                    terms of service
-                  </a>{' '}
-                  and{' '}
-                  <a href="#" className="text-indigo-600 hover:text-indigo-500 dark:text-indigo-400 dark:hover:text-indigo-300">
-                    privacy policy
-                  </a>
-                </FormLabel>
-                <FormMessage />
-              </div>
             </FormItem>
           )}
         />
