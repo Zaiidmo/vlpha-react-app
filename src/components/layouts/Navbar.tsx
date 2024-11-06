@@ -5,6 +5,7 @@ import { Moon, Sun } from 'lucide-react'
 import { Button } from "../ui/button"
 import { GlassModal } from '../GlassModal'
 import LoginForm from '../auth/LoginForm'
+import RegisterForm from '../auth/RegisterForm'
 
 export default function Navbar() {
   const [darkMode, setDarkMode] = useState(false)
@@ -50,10 +51,23 @@ export default function Navbar() {
               <LoginForm />
             </GlassModal>
 
-            {/* Register Button */}
-            <Button variant="outline" className="text-gray-800 dark:text-white border-gray-300 dark:border-gray-600 hover:bg-white/40 dark:hover:bg-gray-700/40 transition-all duration-300 ease-in-out backdrop-blur-md">
+            <GlassModal 
+            trigger={
+              <Button variant="outline" className="text-gray-800 dark:text-white border-gray-300 dark:border-gray-600 hover:bg-white/40 dark:hover:bg-gray-700/40 transition-all duration-300 ease-in-out backdrop-blur-md">
               Register
             </Button>
+            }
+            >
+              <div className="text-center mb-6">
+                <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
+                  Register for a new account
+                </h2>
+              </div>
+              <RegisterForm />
+            </GlassModal>
+
+            {/* Register Button */}
+            
 
             {/* Dark Mode Toggle Button */}
             <Button
