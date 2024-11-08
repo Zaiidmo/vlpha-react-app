@@ -23,7 +23,7 @@ export default function Navbar() {
       <div className="max-w-5xl mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
-            <a href="https://vlpha.tech" className="text-2xl font-semibold text-gray-800 dark:text-white text-shadow">
+            <a href="/" className="text-2xl font-semibold text-gray-800 dark:text-white text-shadow">
               <img src="./vlpha.png" className='w-10 bg-black rounded-full' alt="Logo" />
             </a>
           </div>
