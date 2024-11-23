@@ -6,6 +6,8 @@ import { Button } from "../ui/button"
 import { GlassModal } from '../modals/GlassModal'
 import LoginForm from '../auth/LoginForm'
 import RegisterForm from '../auth/RegisterForm'
+import { useSelector } from 'react-redux'
+import { RootState } from '@/store/store'
 
 export default function Navbar() {
   const [darkMode, setDarkMode] = useState(false)
@@ -18,6 +20,8 @@ export default function Navbar() {
     }
   }, [darkMode])
 
+  const isAuth = useSelector((state: RootState) => state.auth.isAuthenticated);
+
   return (
     <nav className="fixed top-0 left-0 right-0 backdrop-filter backdrop-blur-xl bg-gradient-to-b from-white/60 to-white/30 dark:from-gray-900/60 dark:to-gray-900/30 border-b border-gray-200 dark:border-gray-700 shadow-lg z-50">
       <div className="max-w-5xl mx-auto px-4">
@@ -28,46 +32,46 @@ export default function Navbar() {
             </a>
           </div>
           <div className="flex items-center space-x-4">
-            {/* Login Button as Trigger for the GlassModal */}
-            <GlassModal
+            {!isAuth && (
+            <>
+              <GlassModal
+                trigger={
+                  <Button variant="ghost" className="text-gray-800 bg-transparent dark:text-white hover:bg-white/40 dark:hover:bg-gray-700/40 transition-all duration-300 ease-in-out backdrop-blur-md">
+                    Login
+                  </Button>
+                }
+              >
+                <div className="text-center mb-6">
+                  <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
+                    Log in to your account
+                  </h2>
+                  
+                  <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
+                    Or{' '}
+                    <a href="#" className="font-medium text-indigo-600 hover:text-indigo-500 dark:text-indigo-400 dark:hover:text-indigo-300">
+                      start your 14-day free trial
+                    </a>
+                  </p>
+                </div>
+                <LoginForm />
+              </GlassModal>
+  
+              <GlassModal 
               trigger={
-                <Button variant="ghost" className="text-gray-800 bg-transparent dark:text-white hover:bg-white/40 dark:hover:bg-gray-700/40 transition-all duration-300 ease-in-out backdrop-blur-md">
-                  Login
-                </Button>
+                <Button variant="outline" className="text-gray-800 dark:text-white border-gray-300 dark:border-gray-600 hover:bg-white/40 dark:hover:bg-gray-700/40 transition-all duration-300 ease-in-out backdrop-blur-md">
+                Register
+              </Button>
               }
-            >
-              <div className="text-center mb-6">
-                <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
-                  Log in to your account
-                </h2>
-                
-                <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
-                  Or{' '}
-                  <a href="#" className="font-medium text-indigo-600 hover:text-indigo-500 dark:text-indigo-400 dark:hover:text-indigo-300">
-                    start your 14-day free trial
-                  </a>
-                </p>
-              </div>
-              <LoginForm />
-            </GlassModal>
-
-            <GlassModal 
-            trigger={
-              <Button variant="outline" className="text-gray-800 dark:text-white border-gray-300 dark:border-gray-600 hover:bg-white/40 dark:hover:bg-gray-700/40 transition-all duration-300 ease-in-out backdrop-blur-md">
-              Register
-            </Button>
-            }
-            >
-              <div className="text-center mb-6">
-                <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
-                  Register for a new account
-                </h2>
-              </div>
-              <RegisterForm />
-            </GlassModal>
-
-            {/* Register Button */}
-            
+              >
+                <div className="text-center mb-6">
+                  <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
+                    Register for a new account
+                  </h2>
+                </div>
+                <RegisterForm />
+              </GlassModal>
+            </>
+            )}           
 
             {/* Dark Mode Toggle Button */}
             <Button

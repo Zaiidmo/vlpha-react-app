@@ -1,7 +1,8 @@
 import { RouteObject } from 'react-router-dom'
 import Home from '../pages/Home'
 import ForgotPassword from '@/pages/Auth/ForgotPassword'
-import { ProtectedRoute } from '@/guards/auth.guard'
+import { ProtectedRoute, PublicRoute } from '@/guards/auth.guard'
+import Login from '@/pages/Auth/Login'
 
 const routes: RouteObject[] = [
   {
@@ -10,8 +11,12 @@ const routes: RouteObject[] = [
   },
   { 
     path: '/forgot-password',
-    element: <ForgotPassword />,
-  }
+    element: <PublicRoute><ForgotPassword /></PublicRoute>,
+  },
+  { 
+    path: '/login',
+    element: <PublicRoute><Login /></PublicRoute>,
+  },
 ]
 
 export default routes
