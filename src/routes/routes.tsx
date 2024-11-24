@@ -3,6 +3,7 @@ import Home from '../pages/Home'
 import ForgotPassword from '@/pages/Auth/ForgotPassword'
 import { ProtectedRoute, PublicRoute } from '@/guards/auth.guard'
 import Login from '@/pages/Auth/Login'
+import Register from '@/pages/Auth/Register'
 
 const routes: RouteObject[] = [
   {
@@ -16,6 +17,10 @@ const routes: RouteObject[] = [
   { 
     path: '/login',
     element: <PublicRoute><Login /></PublicRoute>,
+  },
+  { 
+    path: '/register',
+    element: <PublicRoute><Register /></PublicRoute>,
   },
 ]
 
